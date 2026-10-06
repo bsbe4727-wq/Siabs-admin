@@ -316,7 +316,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
-if(sessionStorage.getItem("adminAuth")!=="true"){location.replace("login-admin.html")}
+if(sessionStorage.getItem("adminAuth")!=="true"){location.replace("index.html")}
 const demo={nama:"Muhammad Naufal",nis:"1001",kelas:"X PPLG"};
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function getSiswa(){let r=localStorage.getItem("siswa");if(r===null){localStorage.setItem("siswa",JSON.stringify([demo]));return [demo]}try{return JSON.parse(r)}catch(e){return []}}
@@ -363,8 +363,8 @@ function exportRekap(list){
  const csv="\uFEFFsep=;\n"+[head,...body].map(r=>r.map(q).join(";")).join("\n");
  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="rekap-presensi.csv";a.click();URL.revokeObjectURL(a.href);
 }
-function goHome(){location.href="index.html"}
-function logoutAdmin(){sessionStorage.removeItem("adminAuth");location.href="login-admin.html"}
+function goHome(){location.href="https://bsbe4727-wq.github.io/Siabs/"}
+function logoutAdmin(){sessionStorage.removeItem("adminAuth");location.href="index.html"}
 renderAdmin();
 // otomatis update kalau ada absen baru dari halaman absensi (tab/jendela lain, browser yang sama)
 window.addEventListener("storage",()=>{renderAdmin();if(document.getElementById("siswaModal").classList.contains("show"))renderSiswa();if(document.getElementById("rekapModal").classList.contains("show"))renderRekap()});
